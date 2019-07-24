@@ -1,6 +1,7 @@
 package cn.gg3083.blog;
 
 import me.zhyd.braum.spring.boot.annotation.EnableBraumConfiguration;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
@@ -18,11 +19,16 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication
 @ServletComponentScan
 @EnableTransactionManagement
-@EnableBraumConfiguration
+//@EnableBraumConfiguration
 public class BlogWebApplication {
 
     public static void main(String[] args) {
+        if (args == null || args.length == 0) {
+            args = new String[] { "--spring.profiles.include=dev" };
+        }
         SpringApplication.run(BlogWebApplication.class, args);
     }
+
+
 
 }

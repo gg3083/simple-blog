@@ -20,6 +20,9 @@ import tk.mybatis.spring.annotation.MapperScan;
 public class BlogAdminApplication {
 
     public static void main(String[] args) {
+        if ( args == null || args.length == 0){
+            args = new String[]{"--spring.profiles.include=dev"};
+        }
         SpringApplication.run(BlogAdminApplication.class, args);
     }
 }

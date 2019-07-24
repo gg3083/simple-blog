@@ -17,6 +17,7 @@ import cn.gg3083.blog.persistence.mapper.SysConfigMapper;
 import cn.gg3083.blog.plugin.file.GlobalFileUploader;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
@@ -46,6 +47,8 @@ public class SysConfigServiceImpl implements SysConfigService {
     private SysConfigMapper sysConfigMapper;
     @Autowired
     private AppProperties properties;
+    @Value("${my-site}")
+    private String siteUrl;
 
     /**
      * 获取系统配置
@@ -63,6 +66,9 @@ public class SysConfigServiceImpl implements SysConfigService {
         Map<String, Object> res = new HashMap<>();
         res.put(updateTimeKey, DateUtil.parse("2019-01-01 00:00:00", DateConst.YYYY_MM_DD_HH_MM_SS_EN));
         list.forEach((sysConfig) -> {
+            if (String.valueOf(sysConfig.getConfigKey()).endsWith("Url")){
+                sysConfig.setConfigValue(sysConfig.getConfigValue().replace("localhost",siteUrl));
+            }
             res.put(String.valueOf(sysConfig.getConfigKey()), sysConfig.getConfigValue());
             if (sysConfig.getUpdateTime().after(((Date) res.get(updateTimeKey)))) {
                 res.put(updateTimeKey, sysConfig.getUpdateTime());

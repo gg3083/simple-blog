@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit;
  * @date 2018/11/19 9:24
  * @since 1.8
  */
-@Component
+//@Component
 @Slf4j
 public class BraumIntercepter implements HandlerInterceptor {
     private static final int SUCCESS = 1;
