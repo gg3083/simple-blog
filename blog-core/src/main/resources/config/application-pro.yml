@@ -23,5 +23,5 @@ spring:
     store-type: redis
 
   ####### 自定义配置 #######
-my-site: gg3083.cn
+my-site: 47.101.209.92
   ####### 自定义配置 #######
