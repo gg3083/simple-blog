@@ -1,7 +1,5 @@
 FROM openjdk:8-jdk-alpine
 
-VOLUME /tmp
+EXPOSE 8001
 
-ADD blog-admin-1.0.0.jar app.jar
-
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","app.jar","--spring.profiles.include=pro"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/data/blog-admin-1.0.0.jar","--spring.profiles.include=pro"]
