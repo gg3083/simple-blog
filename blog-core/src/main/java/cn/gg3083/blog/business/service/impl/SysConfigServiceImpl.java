@@ -66,7 +66,7 @@ public class SysConfigServiceImpl implements SysConfigService {
         Map<String, Object> res = new HashMap<>();
         res.put(updateTimeKey, DateUtil.parse("2019-01-01 00:00:00", DateConst.YYYY_MM_DD_HH_MM_SS_EN));
         list.forEach((sysConfig) -> {
-            if (String.valueOf(sysConfig.getConfigKey()).endsWith("Url")){
+            if (String.valueOf(sysConfig.getConfigValue()).contains("localhost")){
                 sysConfig.setConfigValue(sysConfig.getConfigValue().replace("localhost",siteUrl));
             }
             res.put(String.valueOf(sysConfig.getConfigKey()), sysConfig.getConfigValue());
