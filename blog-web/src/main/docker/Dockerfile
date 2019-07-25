@@ -4,4 +4,4 @@ VOLUME /tmp
 
 ADD blog-web-1.0.0.jar app.jar
 
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar","--spring.profiles.include=pro"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/data/app.jar","--spring.profiles.include=pro"]
