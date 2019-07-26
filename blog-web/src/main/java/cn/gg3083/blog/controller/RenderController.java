@@ -9,10 +9,12 @@ import cn.gg3083.blog.business.service.BizArticleService;
 import cn.gg3083.blog.business.service.SysLinkService;
 import cn.gg3083.blog.business.service.SysUpdateRecordeService;
 import cn.gg3083.blog.business.vo.ArticleConditionVO;
+import cn.gg3083.blog.util.RequestUtil;
 import cn.gg3083.blog.util.ResultUtil;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -76,10 +79,11 @@ public class RenderController {
      */
     @RequestMapping("/")
     @BussinessLog(value = "进入首页", platform = PlatformEnum.WEB)
-    public ModelAndView home(ArticleConditionVO vo, Model model) {
+    public ModelAndView home(ArticleConditionVO vo, Model model, HttpServletRequest request) {
         model.addAttribute("url", INDEX_URL);
         loadIndexPage(vo, model);
-        System.err.println(siteUrl);
+        String ip = RequestUtil.getIp();
+
         return ResultUtil.view(INDEX_URL);
     }
 
