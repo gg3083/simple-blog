@@ -4,12 +4,20 @@ import cn.gg3083.blog.business.enums.ConfigKeyEnum;
 import cn.gg3083.blog.business.service.BizLogService;
 import cn.gg3083.blog.business.service.SysConfigService;
 import cn.gg3083.blog.business.util.BaiduPushUtil;
+import cn.gg3083.blog.framework.object.BaseConditionVO;
 import cn.gg3083.blog.persistence.beans.BizLog;
+import cn.gg3083.blog.persistence.beans.SysTemplate;
 import cn.gg3083.blog.persistence.mapper.BizLogMapper;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
+import tk.mybatis.mapper.entity.Example;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /***
@@ -41,6 +49,15 @@ public class BizLogServiceImpl implements BizLogService {
         }
         log.setAddress( address );
         bizLogMapper.insertSelective(log);
+    }
+
+    @Override
+    public PageInfo<BizLog> findPageBreakByCondition(BaseConditionVO vo) {
+        PageHelper.startPage(vo.getPageNumber(), vo.getPageSize());
+        Example example = new Example(BizLog.class);
+        example.setOrderByClause("id desc");
+        List<BizLog> list = bizLogMapper.selectByExample(example);
+        return new PageInfo<>(list);
     }
 
 }

@@ -213,4 +213,10 @@ public class RenderController {
     public ModelAndView files(Model model) {
         return ResultUtil.view("file/list");
     }
+
+    @BussinessLog("进入日志管理页面")
+    @GetMapping("/log")
+    public ModelAndView log(Model model) {
+        return ResultUtil.view("log/list");
+    }
 }
