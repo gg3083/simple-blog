@@ -82,13 +82,13 @@ public class RemoverServiceImpl implements RemoverService {
     public void crawlSingle(Long typeId, String[] urls, boolean convertImg, PrintWriter writer) {
         HunterPrintWriter writerUtil = new HunterPrintWriter(writer);
         for (String url : urls) {
-            log.info("开始抓取文章url : {0}" ,url);
+            log.info("开始抓取文章url : {}" ,url);
             HunterProcessor hunter = new BlogHunterProcessor(url, convertImg, writerUtil);
-            log.info("实例化 hunter： {0}" ,hunter.toString());
+            log.info("实例化 hunter： {}" ,hunter.toString());
             CopyOnWriteArrayList<VirtualArticle> list = hunter.execute();
-            list.forEach( s -> log.info(s.toString()));
+            list.forEach( s -> log.info("实体类 :{}",s.toString()));
             this.saveArticles(typeId, hunter.getConfig(), writerUtil, list);
-            log.info("抓取完成！！！");
+            log.info("抓取完成！！！{}",hunter.getConfig());
         }
         writerUtil.shutdown();
     }
