@@ -2,6 +2,7 @@ package cn.gg3083.blog.framework.object;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +19,7 @@ import java.util.Date;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
 public abstract class AbstractDO implements Serializable {
     /**
      * @fieldName: serialVersionUID

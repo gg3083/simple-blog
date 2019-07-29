@@ -4,10 +4,7 @@ import cn.gg3083.blog.business.annotation.BussinessLog;
 import cn.gg3083.blog.business.entity.Article;
 import cn.gg3083.blog.business.enums.ArticleStatusEnum;
 import cn.gg3083.blog.business.enums.PlatformEnum;
-import cn.gg3083.blog.business.service.BizArticleArchivesService;
-import cn.gg3083.blog.business.service.BizArticleService;
-import cn.gg3083.blog.business.service.SysLinkService;
-import cn.gg3083.blog.business.service.SysUpdateRecordeService;
+import cn.gg3083.blog.business.service.*;
 import cn.gg3083.blog.business.vo.ArticleConditionVO;
 import cn.gg3083.blog.util.RequestUtil;
 import cn.gg3083.blog.util.ResultUtil;
@@ -51,6 +48,8 @@ public class RenderController {
     private SysLinkService sysLinkService;
     @Autowired
     private SysUpdateRecordeService updateRecordeService;
+    @Autowired
+    private BizLogService logService;
 
     /**
      * 加载首页的数据
@@ -83,7 +82,7 @@ public class RenderController {
         model.addAttribute("url", INDEX_URL);
         loadIndexPage(vo, model);
         String ip = RequestUtil.getIp();
-
+        logService.save(ip);
         return ResultUtil.view(INDEX_URL);
     }
 

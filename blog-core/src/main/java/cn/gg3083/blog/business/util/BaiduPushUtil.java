@@ -1,14 +1,20 @@
 package cn.gg3083.blog.business.util;
 
+import cn.gg3083.blog.business.service.SysConfigService;
 import cn.gg3083.blog.framework.exception.ZhydCommentException;
 import cn.gg3083.blog.util.RestClientUtil;
+import cn.gg3083.blog.util.UrlBuildUtil;
+import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.util.Date;
+import java.util.Map;
 
 /**
  * 百度站长推送工具类
@@ -72,5 +78,23 @@ public class BaiduPushUtil extends RestClientUtil {
                 connection.disconnect();
             }
         }
+    }
+
+    public static String getAddress(String ip,String key){
+
+        String locationJson = RestClientUtil.get(UrlBuildUtil.getLocationByIp(ip, key));
+        JSONObject localtionContent = JSONObject.parseObject(locationJson).getJSONObject("content");
+
+        if (localtionContent.containsKey("address_detail")) {
+            JSONObject addressDetail = localtionContent.getJSONObject("address_detail");
+            String city = addressDetail.getString("city");
+            String district = addressDetail.getString("district");
+            String street = addressDetail.getString("street");
+            String address = addressDetail.getString("province") + (StringUtils.isEmpty(city) ? "" : city) +
+                    (StringUtils.isEmpty(district) ? "" : district) +
+                    (StringUtils.isEmpty(street) ? "" : street);
+            return address;
+        }
+        return "获取失败";
     }
 }
