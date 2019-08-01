@@ -10,6 +10,7 @@ import cn.gg3083.blog.business.service.BizTagsService;
 import cn.gg3083.blog.business.service.RemoverService;
 import cn.gg3083.blog.business.util.ImageDownloadUtil;
 import cn.gg3083.blog.util.SessionUtil;
+import lombok.extern.slf4j.Slf4j;
 import me.zhyd.hunter.Hunter;
 import me.zhyd.hunter.config.HunterConfig;
 import me.zhyd.hunter.entity.ImageLink;
@@ -37,6 +38,7 @@ import java.util.stream.Collectors;
  * @since 1.8
  */
 @Service
+@Slf4j
 public class RemoverServiceImpl implements RemoverService {
 
     @Autowired
@@ -80,9 +82,13 @@ public class RemoverServiceImpl implements RemoverService {
     public void crawlSingle(Long typeId, String[] urls, boolean convertImg, PrintWriter writer) {
         HunterPrintWriter writerUtil = new HunterPrintWriter(writer);
         for (String url : urls) {
+            log.info("开始抓取文章url : {}" ,url);
             HunterProcessor hunter = new BlogHunterProcessor(url, convertImg, writerUtil);
+            log.info("实例化 hunter： {}" ,hunter.toString());
             CopyOnWriteArrayList<VirtualArticle> list = hunter.execute();
+            list.forEach( s -> log.info("实体类 :{}",s.toString()));
             this.saveArticles(typeId, hunter.getConfig(), writerUtil, list);
+            log.info("抓取完成！！！{}",hunter.getConfig());
         }
         writerUtil.shutdown();
     }
