@@ -153,7 +153,8 @@
                                     '</li>' +
                                     '<li><i class="fa fa-address-book-o fa-fw"></i> <span style="color: #a9a9a9;">' + row.ip + ' | ' + row.address + '</span></li>' +
                                     '<li><i class="fa fa-windows fa-fw"></i> <span style="color: #a9a9a9;">' + row.os + ' | ' + row.browser + '</span></li>' +
-                                    '<li><i class="fa fa-clock-o fa-fw"></i> <span style="color: #a9a9a9;">' + row.createTimeString + '</span></li></ul>';
+                                    '<li><i class="fa fa-clock-o fa-fw"></i> <span style="color: #a9a9a9;">' + new Date(row.createTime).format("yyyy-MM-dd hh:mm:ss") + '</span></li></ul>';
+                                    // '<li><i class="fa fa-clock-o fa-fw"></i> <span style="color: #a9a9a9;">' + row.createTime?new Date(row.createTime).format("yyyy-MM-dd hh:mm:ss"):"-" + '</span></li></ul>';
                         }
                     }, {
                         field: 'content',
