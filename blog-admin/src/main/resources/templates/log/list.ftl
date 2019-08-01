@@ -95,7 +95,7 @@
                         title: '访问时间',
                         width: '100px',
                         formatter: function (code) {
-                            return code ? code : '-';
+                            return code ? new Date(code).format("yyyy-MM-dd hh:mm:ss"): '-';
                         }
                     },{
                         field: 'operate',
