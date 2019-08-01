@@ -132,27 +132,27 @@
                             <div role="tabpanel" class="tab-pane fade" id="tab_seo" aria-labelledby="seo-tab">
                                 <form class="form-horizontal form-label-left" novalidate>
                                     <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="siteName">首页标题 <i class="fa fa-question-circle" title="百度白皮书推荐的格式：关键词1_关键词2_关键词3_关键词4-品牌词"></i> <span class="required">*</span></label>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="siteName">首页标题 <i class="fa fa-question-circle" title="百度白皮书推荐的格式：关键词1_关键词2_关键词3_关键词4-品牌词"></i> <#--<span class="required">*</span>--></label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" class="form-control col-md-7 col-xs-12" name="siteName" id="siteName" required="required" placeholder="请输入站点名"/>
+                                            <input type="text" class="form-control col-md-7 col-xs-12" name="siteName" id="siteName"  placeholder="请输入站点名"/>
                                         </div>
                                     </div>
                                     <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="homeDesc">META描述 <i class="fa fa-question-circle" title="对keywords进行扩展描述，100~130字左右即可"></i> <span class="required">*</span></label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <textarea class="form-control col-md-7 col-xs-12" id="homeDesc" name="homeDesc" required="required" placeholder="请输入首页描述" rows="5"></textarea>
+                                            <textarea class="form-control col-md-7 col-xs-12" id="homeDesc" name="homeDesc" placeholder="请输入首页描述" rows="5"></textarea>
                                         </div>
                                     </div>
                                     <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="homeKeywords">META关键词 <i class="fa fa-question-circle" title="网站关键字，半角逗号分割，不建议多，贴合网站主题"></i> <span class="required">*</span></label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <textarea class="form-control col-md-7 col-xs-12" id="homeKeywords" name="homeKeywords" required="required" placeholder="请输入首页关键字(半角逗号分隔)" rows="5"></textarea>
+                                            <textarea class="form-control col-md-7 col-xs-12" id="homeKeywords" name="homeKeywords"  placeholder="请输入首页关键字(半角逗号分隔)" rows="5"></textarea>
                                         </div>
                                     </div>
                                     <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="baiduPushToken">百度推送Token <i class="fa fa-question-circle" title="方便百度引擎快速收录"></i> <#--<span class="required">*</span>--></label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" class="form-control col-md-7 col-xs-12" name="baiduPushToken" id="baiduPushToken" required="required" placeholder="请输入百度推送Token，推送功能能加快百度搜索引擎对博文的索引速度"/>
+                                            <input type="text" class="form-control col-md-7 col-xs-12" name="baiduPushToken" id="baiduPushToken"  placeholder="请输入百度推送Token，推送功能能加快百度搜索引擎对博文的索引速度"/>
                                         </div>
                                     </div>
                                     <div class="item form-group">
@@ -164,7 +164,7 @@
                                     <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="baiduPushCookie">百度推送Cookie <i class="fa fa-question-circle" title="请求API使用"></i> <span class="required">*</span></label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <textarea class="form-control col-md-7 col-xs-12" name="baiduPushCookie" id="baiduPushCookie" required="required" placeholder="请输入百度推送Cookie" rows="5"></textarea>
+                                            <textarea class="form-control col-md-7 col-xs-12" name="baiduPushCookie" id="baiduPushCookie"  placeholder="请输入百度推送Cookie" rows="5"></textarea>
                                         </div>
                                     </div>
                                     <div class="item">
